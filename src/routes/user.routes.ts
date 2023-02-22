@@ -1,15 +1,8 @@
-import { Router, Request, Response } from "express";
-import sequelize from "../data-source";
+import { Router } from "express";
+import { getUserController } from "../controller/user.controller";
 
 const userRouter = Router();
 
-userRouter.get("", async (req: Request, res: Response) => {
-  try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-});
+userRouter.get("", getUserController);
 
 export default userRouter;
